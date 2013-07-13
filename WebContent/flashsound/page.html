@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Flash Sound</title>
+<script type="text/javascript" src="swfobject.js"></script>
+<script type="text/javascript">
+function getFlashObject(movieName)
+{
+	if (window.document[movieName])
+	{
+		return window.document[movieName];
+	}
+	if (navigator.appName.indexOf("Microsoft Internet")==-1)
+	{
+		if (document.embeds && document.embeds[movieName])
+			return document.embeds[movieName];
+	}
+	else // if (navigator.appName.indexOf("Microsoft Internet")!=-1)
+	{
+		return document.getElementById(movieName);
+	}
+}
+function asplay(c){
+	var asound = getFlashObject("asound");
+	if(asound){
+		asound.SetVariable("f",c);
+		asound.GotoFrame(1);
+	}
+}
+function asstop(){
+	var asound = getFlashObject("asound");
+	if(asound){
+		asound.SetVariable("f",'not-exist.mp3');
+		asound.GotoFrame(1);
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="sound">
+<object style="height:0px;width:0px;overflow:hidden;" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="0" height="0" id="asound" align="absmiddle">
+		<param name="allowScriptAccess" value="sameDomain" />
+		<param name="movie" value="asound.swf" /><param name="quality" value="high" /><embed src="asound.swf" quality="high" width="0" height="0" name="asound" align="absmiddle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+<input type="button" value="One" onclick="asplay('1.mp3')" />
+<input type="button" value="Two" onclick="asplay('2.mp3')" />
+<input type="button" value="Start" onclick="asplay('start.mp3')" />
+<input type="button" value="Stop" onclick="asstop()" />
+</div>
+</body>
+</html>

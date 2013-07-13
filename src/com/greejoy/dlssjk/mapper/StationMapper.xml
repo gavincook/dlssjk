@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.greejoy.dlssjk.repository.StationRepository">
+
+	<select id="getStations" resultType="Long">
+		select id from dl_station;
+	</select>
+	
+	<select id="getStation"  resultMap="station">
+		select * from dl_station where id = #{id};
+	</select>
+	
+	<update id="update" parameterType="com.greejoy.dlssjk.domain.Station">
+		update dl_station set name=#{station.name},logo=#{station.logo} where id=#{station.id}
+	</update>
+	
+	<insert id="save" parameterType="com.greejoy.dlssjk.domain.Station">
+		insert into dl_station(name,ip,port,gps,description,telephone,contact,logo,address,station_id) values(
+		#{station.name},#{station.ip},#{station.port},#{station.gps},#{station.description},#{station.telephone},
+		#{station.contact},#{station.logo},#{station.address},#{station.stationId}
+		)
+	</insert>
+	
+	<delete id="delete">
+		delete from dl_station where id = #{id}
+	</delete>
+	
+	<resultMap type="com.greejoy.dlssjk.domain.Station" id="station">
+		<result column="station_id" property="stationId"/>
+	</resultMap>
+</mapper>

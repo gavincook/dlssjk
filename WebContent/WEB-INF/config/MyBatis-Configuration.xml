@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <mappers>
+        <mapper resource="com/greejoy/rbac/mapper/MenuMapper.xml" />
+        <mapper resource="com/greejoy/rbac/mapper/UserMapper.xml" />
+        <mapper resource="com/greejoy/rbac/mapper/RoleMapper.xml" />
+        <mapper resource="com/greejoy/rbac/mapper/PermissionMapper.xml" />
+        <mapper resource="com/greejoy/log/mapper/LogMapper.xml" /> 
+        <!-- <mapper resource="com/greejoy/dlssjk/repository/StationRepository.xml" />  -->
+     	<mapper resource="com/greejoy/dlssjk/mapper/StationMapper.xml" />
+     	<package name="com/greejoy/rbac/mapper"/> 
+    </mappers>
+</configuration>

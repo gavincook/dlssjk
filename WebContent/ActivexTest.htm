@@ -1,0 +1,236 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>New Page 1</title>
+<style>  
+.a3{width:30;border:1;text-align:center}  
+</style>
+<script language="javascript">
+
+
+function ActiveXStationIPCon(ActiveXObj)
+{ // alert(" Function Finish!");
+	var eMsg = document.getElementById("divMsg");
+
+	var strConn=sip1.value+"."+sip2.value+"."+sip3.value+"."+sip4.value;
+
+	MyCCDActiveX.setServerIP(strConn);
+	MyIRActiveX.setServerIP(strConn);
+
+
+	return 0;
+}
+function ActiveXStationPortCon(ActiveXObj)
+{
+    var eMsg = document.getElementById("divMsg");
+    var strConn = sPort.value;
+    MyCCDActiveX.setServerPort(strConn); //连接到工作站端口
+    MyIRActiveX.setServerPort(strConn); //连接到工作站端口
+
+    return 0;
+}
+function ActiveXMonitorIPCon(ActiveXObj) {
+    var eMsg = document.getElementById("divMsg");
+
+    var strConn = si1.value + "." + si2.value + "." + si3.value + "." + si4.value;
+
+    MyCCDActiveX.setMonitorIP(strConn); //连接到工作站
+    MyIRActiveX.setMonitorIP(strConn); //连接到工作站
+
+    return 0;
+}
+function ActiveXMonitorPortCon(ActiveXObj) {
+    var eMsg = document.getElementById("divMsg");
+    var strConn = Port.value;
+
+    MyCCDActiveX.setMonitorPort(strConn); //连接到监控器端口
+    MyIRActiveX.setMonitorPort(strConn); //连接到监控器端口
+
+    return 0;
+}
+
+
+function ActiveXocxIRControlAutoFocus(MyIRActiveX) {
+    var retVal = MyIRActiveX.opAuto();
+	var eMsg = document.getElementById("divRetMsg");
+	eMsg.innerHTML="IRControlAutoFocus返回值："+retVal;
+}
+
+function ActiveXocxVideoControlUp() {
+	//if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+	    MyIRActiveX.opTop();
+	//} else if (ActiveXocxIsOcxConn(MyCCDActiveX) == 1) {
+	 //   MyCCDActiveX.opTop();
+	//}
+}
+function ActiveXocxVideoControlDown() {
+	//if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+		MyIRActiveX.opDown();
+	//}else if(ActiveXocxIsOcxConn(MyCCDActiveX) == 1){
+		//MyCCDActiveX.opDown();
+	//}
+}
+function ActiveXocxVideoControlLeft() {
+	//if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+		MyIRActiveX.opLeft();
+	//}else if(ActiveXocxIsOcxConn(MyCCDActiveX) == 1){
+		//MyCCDActiveX.opLeft();
+	//}
+}
+function ActiveXocxVideoControlRight() {
+   // if (ActiveXocxIsOcxConn(MyIRActiveX) == 1) {
+        MyIRActiveX.opRight();
+   // } else if (ActiveXocxIsOcxConn(MyCCDActiveX) == 1) {
+       // MyCCDActiveX.opRight();
+   // }
+}
+function ActiveXocxIRControlFocusFar(MyIRActiveX) {
+    MyIRActiveX.opIRFar();
+}
+function ActiveXocxIRControlFocusNear(MyIRActiveX) {
+    MyIRActiveX.opIRNear();
+}
+function ActiveXocxCCDControlFocusFar() {
+    //alert("ok");
+    MyCCDActiveX.opCCDFar();
+}
+
+function ActiveXocxCCDControlFocusNear() {
+   // alert("ok");
+    MyCCDActiveX.opCCDNear();
+}
+function ActiveXocxstartOp() {
+    //alert("ActiveXocxstartOp");
+    MyIRActiveX.startOp();
+    MyCCDActiveX.startOp();
+    
+}
+function ActiveXocxstopOp() {
+    //alert("ActiveXocxstopOp");
+    MyIRActiveX.stopOp();
+    MyCCDActiveX.stopOp();
+}
+//end hiden-->
+function ActiveXconnect() {
+
+
+    MyIRActiveX.connect("IRZ"); 
+    MyCCDActiveX.connect("CCDZ");
+}
+
+function ActiveXVideoStop() {
+    MyIRActiveX.ocxVideoStop();
+    MyCCDActiveX.ocxVideoStop();
+
+}
+function ActiveXocxCCDSAVE() {
+    //alert("HTMLok");
+    MyCCDActiveX.photoCCD();
+
+}
+function ActiveXocxIRSAVE() {
+    //alert("HTMLok");
+    MyIRActiveX.photoIR();
+
+}
+function ActiveXocxgetErrorText() {
+    //alert("HTMLok");
+    var aaaa = MyCCDActiveX.getErrorText();
+    alert("CCD_"+aaaa);
+    var a = MyIRActiveX.getErrorText();
+    alert("IR_"+a);
+
+}
+</script>
+<!-- 回调函数 -->
+<!--SCRIPT FOR="MyIRActiveX" EVENT="clickCallBack()"  LANGUAGE="JavaScript">
+	var eRetMsg = document.getElementById("divRetMsg");
+	eRetMsg.innerHTML ="IR - clickCallBack回调成功!";
+  //alert('clickCallBack回调成功!');
+</SCRIPT-->
+ <!-- 回调函数 -->
+<!--SCRIPT FOR="MyCCDActiveX" EVENT="clickCallBack()"  LANGUAGE="JavaScript">
+	var eRetMsg = document.getElementById("divRetMsg");
+	eRetMsg.innerHTML ="CCD - clickCallBack回调成功!";
+  //alert('clickCallBack回调成功!');
+</SCRIPT-->
+</head>
+
+<body >
+<INPUT TYPE="hidden" NAME="RedirtIP" VALUE="192.168.10.77">
+<INPUT TYPE="hidden" NAME="RedirtPort" VALUE="9905">
+<p>
+ <table cellpadding="0" cellspacing="0" width="775px">
+ <tr>
+ <td> 
+ <OBJECT id="MyIRActiveX" name="MyIRActiveX" 
+ style="LEFT=100; TOP=10;width=384; height=288;" 
+ classid="clsid:681F286A-CE18-4785-BEB1-0AA41D109510"
+ codebase = "MrActiveX.cab#version=1,0,0,1"
+ ></OBJECT>
+</td>&nbsp;
+<td><OBJECT id="MyCCDActiveX" name="MyCCDActiveX" 
+ style="LEFT=600; TOP=100;width=384; height=288;" 
+ classid="clsid:681F286A-CE18-4785-BEB1-0AA41D109510"
+ codebase = "MrActiveX.cab#version=1,0,0,1"
+ ></OBJECT></td>
+ </tr>
+  <tr>
+  <td> 
+ <div>
+	<INPUT TYPE="button" NAME="Submit0" VALUE="StationIP" ONCLICK=ActiveXStationIPCon() >
+    <INPUT TYPE="button" NAME="Submit1" VALUE="MonitorIPr" ONCLICK=ActiveXMonitorIPCon()>
+	<INPUT TYPE="button" NAME="Submit2" VALUE="StationPort" ONCLICK=ActiveXStationPortCon() >
+    <INPUT TYPE="button" NAME="Submit3" VALUE="MonitorPort" ONCLICK=ActiveXMonitorPortCon() >
+    </div>
+  </td> 
+  <td>
+      <input id="Button3" type="button" value="connect" onclick="ActiveXconnect()" /></td>
+                <td>
+                    <input id="Button1" type="button" value="VideoStop" onclick="ActiveXVideoStop()" /></td>
+  </tr>
+</table>
+
+</p>
+<div style="display:inline;width:500;">
+<div>工作站IP：</div><div style="border-width:1;border-color:balck;border-style:solid;width:165;font-size:9pt;display:inline;"> 
+<input type=text name=sip1 maxlength=3 class=a3 value="192" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sip2 maxlength=3 class=a3 value="168" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sip3 maxlength=3 class=a3 value="102" onkeyup="mask(this)" onbeforepaste=mask_c()>.
+<input type=text name=sip4 maxlength=3 class=a3 value="2" onkeyup="mask(this)" onbeforepaste=mask_c()>  
+</div>
+<div>端口号：</div><div><input type=text name=sPort style="width:50px" value="9908"></div>
+</div>
+<div style="display:inline;width:500;">
+<div>监控器IP：</div><div style="border-width:1;border-color:balck;border-style:solid;width:165;font-size:9pt;display:inline;"> 
+<input type=text name=si1 maxlength=3 class=a3 value="192" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=si2 maxlength=3 class=a3 value="168" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=si3 maxlength=3 class=a3 value="102" onkeyup="mask(this)" onbeforepaste=mask_c()>.
+<input type=text name=si4 maxlength=3 class=a3 value="212" onkeyup="mask(this)" onbeforepaste=mask_c()>
+</div>
+<div>端口号：</div><div><input type=text name=Port style="width:50px" value="9905"></div>
+</div>
+<div style="display:inline;">
+    <div style="width:60px;margin-left:28px">
+	<INPUT TYPE="button" NAME="Submit37" VALUE="up"  ONCLICK=ActiveXocxVideoControlUp()>
+    </div>
+    <div>
+    <INPUT TYPE="button" NAME="Submit38" VALUE="left" ONCLICK=ActiveXocxVideoControlLeft()>
+    <INPUT TYPE="button" NAME="Submit39" VALUE="right" ONCLICK=ActiveXocxVideoControlRight()> </div>
+    <div style="width:60px;margin-left:25px">
+    <INPUT TYPE="button" NAME="Submit40" VALUE="down" ONCLICK=ActiveXocxVideoControlDown()>&nbsp;&nbsp;
+    </div>
+	<INPUT TYPE="button" NAME="Submit50" VALUE="IRFocusFar" ONCLICK=ActiveXocxIRControlFocusFar(MyIRActiveX)>
+	<INPUT TYPE="button" NAME="Submit51" VALUE="IRFocusNear" ONCLICK=ActiveXocxIRControlFocusNear(MyIRActiveX)>
+	<INPUT TYPE="button" NAME="Submit52" VALUE="IRAutoFocus" ONCLICK=ActiveXocxIRControlAutoFocus(MyIRActiveX)></div>
+    <INPUT TYPE="button" NAME="Submit42" VALUE="stopOp" ONCLICK=ActiveXocxstopOp()>
+    <INPUT TYPE="button" NAME="Submit41" VALUE="startOp"  ONCLICK=ActiveXocxstartOp() style="height: 25px">
+    <INPUT TYPE="button" NAME="Submit43" VALUE="CCDFocusFar" ONCLICK=ActiveXocxCCDControlFocusFar()>
+    <INPUT TYPE="button" NAME="Submit44" VALUE="CCDFocusNear" ONCLICK=ActiveXocxCCDControlFocusNear()>
+    <INPUT TYPE="button" NAME="Submit45" VALUE="CCDSAVE" ONCLICK=ActiveXocxCCDSAVE()>
+    <INPUT TYPE="button" NAME="Submit46" VALUE="IRSAVE" ONCLICK=ActiveXocxIRSAVE()>
+    <INPUT TYPE="button" NAME="Submit47" VALUE="getErrorText" ONCLICK=ActiveXocxgetErrorText()>
+</body>
+
+</html>
