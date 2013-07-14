@@ -1,0 +1,347 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" type="text/css" href="css/dlssjk/slider.css"/>
+ <script type="text/javascript" src="js/slider_extras.js"></script>
+<title>SAT Video Monitor System</title>
+<style>  
+.a3{width:30;border:1;text-align:center}  
+</style>
+<script language="javascript">
+function onDocReady(){
+	RedirtIP.value=window.location.hostname;
+	var re = /(\d+)\.(\d+)\.(\d+)\.(\d+)/ig;    
+	var r = "";
+	while(r = re.exec(RedirtIP.value)) {   
+     //alert(r[0] + " A  " + r[1]);
+	 sMip1.value = r[1];
+	 sMip2.value = r[2];
+	 sMip3.value = r[3];
+	 sMip4.value = r[4];
+	}
+	//alert(RedirtIP.value); 
+}
+function mask(obj){  
+    obj.value=obj.value.replace(/[^\d]/g,'')  
+    key1=event.keyCode  
+    if (key1==37 || key1==39){   
+        obj.blur();  
+        nextip=parseInt(obj.name.substr(2,1))  
+        nextip=key1==37?nextip-1:nextip+1;  
+        nextip=nextip>=5?1:nextip  
+        nextip=nextip<=0?4:nextip  
+        eval("sip"+nextip+".focus()")  
+    }  
+    if(obj.value.length>=3){  
+        if(parseInt(obj.value)>=256 || parseInt(obj.value)<=0){  
+            alert(parseInt(obj.value)+"IP地址错误！")  
+            obj.value=""  
+            obj.focus()
+            return false;  
+        }else{   
+            obj.blur();  
+            nextip=parseInt(obj.name.substr(3,1))+1  
+            nextip=nextip>=5?1:nextip  
+            nextip=nextip<=0?4:nextip  
+            eval("sip"+nextip+".focus()")  
+        }  
+    }  
+}  
+function mask_c(obj){
+	clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))  
+}
+
+function ActiveXOnText(ActiveXObj) {
+      alert("OnTest Function start!");
+    ActiveXObj.OnTest2("dd", 9);
+    //MyActiveX.ocxConn();
+    alert("OnTest Function Finish!");
+}
+
+function ActiveXWindowSize(ActiveXObj) {
+    alert("size 84, 88");
+    ActiveXObj.ocxSetWindowSize(84, 88)
+}
+
+
+function ActiveXocxIsOcxOK(ActiveXObj) {
+    ActiveXObj.ocxIsOcxOK();
+}
+
+function ActiveXocxIsOcxConn(ActiveXObj) {
+	var nConn = ActiveXObj.ocxIsOcxConn();
+	var eMsg = document.getElementById("divRetMsg");
+	eMsg.innerHTML= ActiveXObj.name + " ocxIsOcxConn返回值："+ nConn;
+    return nConn;
+}
+
+function ActiveXocxPTZControl(ActiveXObj) {
+    alert("PTZ 1, 2");
+    ActiveXObj.ocxPTZControl(1,2)
+}
+
+function ActiveXocxVideoStartTest(ActiveXObj) {
+    ActiveXObj.ocxVideoStartTest();
+}
+
+function ActiveXIRVideoStart(ActiveXObj)
+{
+	var eMsg = document.getElementById("divMsg");
+	var eRetMsg = document.getElementById("divRetMsg");
+
+	var strRedirtIP = sMip1.value + "." + sMip2.value + "." + sMip3.value + "." + sMip4.value;
+	var strConn=sip1.value+"."+sip2.value+"."+sip3.value+"."+sip4.value+":"+sPort.value+"&admin@123356";
+	var strStart="IRV:" + strRedirtIP + ":" + sMPort.value;
+
+	eMsg.innerHTML="登录工作站字符串："+strConn+"<br/>接收视频字符串：" + strStart;
+	var retVal=ActiveXObj.ocxConn(strConn);//连接到工作站，并登录；格式：工作站IP:端口号&用户名@密码
+	eRetMsg.innerHTML ="ocxConn("+strConn+")返回值："+retVal;
+	/*
+	开始接收视频，格式：视频类型:机器IP:端口号
+	如：
+	"IR:192.168.106.64:9905"//红外测温
+	"IRZ:192.168.106.64:9905"//红外H.264视频
+	"CCD:192.168.106.64:9905"//CCD视频
+	"CCDZ:192.168.106.64:9905"//CCD H.264视频
+	*/
+	retVal=ActiveXObj.ocxVideoStart(strStart);
+	
+	eRetMsg.innerHTML +="<br/>ocxVideoStart("+strStart+")返回值："+retVal;
+	return 0;
+}
+function ActiveXCCDVideoStart(ActiveXObj)
+{
+	var eMsg = document.getElementById("divMsg");
+	var eRetMsg = document.getElementById("divRetMsg");
+
+	var strRedirtIP = sMip1.value + "." + sMip2.value + "." + sMip3.value + "." + sMip4.value;
+	var strConn=sip1.value+"."+sip2.value+"."+sip3.value+"."+sip4.value+":"+sPort.value+"&admin@123356";
+	var strStart="CCDZ:" + strRedirtIP + ":" + sMPort.value;
+
+	eMsg.innerHTML="登录工作站字符串："+strConn+"<br/>接收视频字符串：" + strStart;
+	var retVal=ActiveXObj.ocxConn(strConn);//连接到工作站，并登录；格式：工作站IP:端口号&用户名@密码
+	eRetMsg.innerHTML ="ocxConn("+strConn+")返回值："+retVal;
+	/*
+	开始接收视频，格式：视频类型:机器IP:端口号
+	如：
+	"IR:192.168.106.64:9905"//红外测温
+	"IRZ:192.168.106.64:9905"//红外H.264视频
+	"CCD:192.168.106.64:9905"//CCD视频
+	"CCDZ:192.168.106.64:9905"//CCD H.264视频
+	*/
+	
+	retVal=ActiveXObj.ocxVideoStart(strStart);
+	
+	eRetMsg.innerHTML +="<br/>ocxVideoStart("+strStart+")返回值："+retVal;
+	return 0;
+}
+function ActiveXocxVideoStop(ActiveXObj)
+{
+	var retVal=ActiveXObj.ocxVideoStop();
+	var eMsg = document.getElementById("divRetMsg");
+	eMsg.innerHTML="ocxVideoStop返回值："+retVal;
+}
+function ActiveXocxclearBorder(ActiveXObj)
+{
+	var retVal=ActiveXObj.ocxclearBorder();
+	var eMsg = document.getElementById("divRetMsg");
+	eMsg.innerHTML="ocxclearBorder返回值："+retVal;
+}
+
+function ActiveXocxIRControlAutoFocus(ActiveXObj){
+ 	var retVal=ActiveXObj.ocxIRControl(2);
+	var eMsg = document.getElementById("divRetMsg");
+	eMsg.innerHTML="IRControlAutoFocus返回值："+retVal;
+}
+function ActiveXocxIRControlShutter(ActiveXObj){
+ 	var retVal=ActiveXObj.ocxIRControl(1);
+	var eMsg = document.getElementById("divRetMsg");
+	eMsg.innerHTML="IRControlShutter返回值："+retVal;
+}
+
+function ActiveXocxVideoControlUp() {
+	if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+		MyIRActiveX.ocxPTZControl(1, 16);
+	}else if(ActiveXocxIsOcxConn(MyCCDActiveX) == 1){
+		MyCCDActiveX.ocxPTZControl(1, 16);
+	}
+}
+function ActiveXocxVideoControlDown() {
+	if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+		MyIRActiveX.ocxPTZControl(3, 16);
+	}else if(ActiveXocxIsOcxConn(MyCCDActiveX) == 1){
+		MyCCDActiveX.ocxPTZControl(3, 16);
+	}
+}
+function ActiveXocxVideoControlLeft() {
+	if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+		MyIRActiveX.ocxPTZControl(5, 10);
+	}else if(ActiveXocxIsOcxConn(MyCCDActiveX) == 1){
+		MyCCDActiveX.ocxPTZControl(5, 10);
+	}
+}
+function ActiveXocxVideoControlRight() {
+	if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+		MyIRActiveX.ocxPTZControl(7, 10);
+	}else if(ActiveXocxIsOcxConn(MyCCDActiveX) == 1){
+		MyCCDActiveX.ocxPTZControl(7, 10);
+	}
+}
+function ActiveXocxVideoControlStop() {
+	if(ActiveXocxIsOcxConn(MyIRActiveX) == 1){
+		MyIRActiveX.ocxPTZControl(4, 0);
+	}else if(ActiveXocxIsOcxConn(MyCCDActiveX) == 1){
+		MyCCDActiveX.ocxPTZControl(4, 0);
+	}
+}
+
+function ActiveXocxVideoControlFocusFar(ActiveXObj) {
+	 ActiveXObj.ocxPTZControl(10, 0);
+}
+
+function ActiveXocxVideoControlFocusNear(ActiveXObj) {
+	 ActiveXObj.ocxPTZControl(12, 0);
+}
+
+//end hiden-->
+</script>
+<!-- 回调函数 -->
+<SCRIPT FOR="MyIRActiveX" EVENT="clickCallBack()"  LANGUAGE="JavaScript">
+	var eRetMsg = document.getElementById("divRetMsg");
+	eRetMsg.innerHTML ="IR - clickCallBack回调成功!";
+  //alert('clickCallBack回调成功!');
+</SCRIPT>
+ <!-- 回调函数 -->
+<SCRIPT FOR="MyCCDActiveX" EVENT="clickCallBack()"  LANGUAGE="JavaScript">
+	var eRetMsg = document.getElementById("divRetMsg");
+	eRetMsg.innerHTML ="CCD - clickCallBack回调成功!";
+  //alert('clickCallBack回调成功!');
+</SCRIPT>
+</head>
+
+<body onLoad="onDocReady()">
+<INPUT TYPE="hidden" NAME="RedirtIP" VALUE="127.0.0.1">
+<INPUT TYPE="hidden" NAME="RedirtPort" VALUE="9905">
+<p>
+ <table cellpadding="0" cellspacing="0" width="775px">
+ <tr>
+ <td> 
+ <OBJECT id="MyIRActiveX" name="MyIRActiveX" 
+ style="LEFT=100; TOP=10;width=384; height=288;" 
+ classid="clsid:1A784032-A2BA-4DF3-BE2E-E2D5B2257920"
+ codebase = "MrActiveX.cab#version=1,0,0,2"
+ ></OBJECT>
+</td>
+<td><OBJECT id="MyCCDActiveX" name="MyCCDActiveX" 
+ style="LEFT=600; TOP=100;width=384; height=288;" 
+ classid="clsid:1A784032-A2BA-4DF3-BE2E-E2D5B2257920"
+ codebase = "MrActiveX.cab#version=1,0,0,2"
+ ></OBJECT></td>
+ </tr>
+  <tr>
+  <td> 
+ <div>
+	<INPUT TYPE="button" NAME="Submit0" VALUE="OnTest" ONCLICK=ActiveXOnText(MyIRActiveX) >
+    <INPUT TYPE="button" NAME="Submit1" VALUE="IsOcxOK" ONCLICK=ActiveXocxIsOcxOK(MyIRActiveX)>
+    <INPUT TYPE="button" NAME="Submit3" VALUE="SetWinSize" ONCLICK=ActiveXWindowSize(MyIRActiveX) >
+    <INPUT TYPE="button" NAME="Submit4" VALUE="PTZControl" ONCLICK=ActiveXocxPTZControl(MyIRActiveX)>
+    <INPUT TYPE="button" NAME="Submit5" VALUE="VideoStartTest" ONCLICK=ActiveXocxVideoStartTest(MyIRActiveX)>
+    <INPUT TYPE="button" NAME="Submit6" VALUE="IRVideoStart" ONCLICK=ActiveXIRVideoStart(MyIRActiveX)>
+	<INPUT TYPE="button" NAME="Submit7" VALUE="VideoStop" ONCLICK=ActiveXocxVideoStop(MyIRActiveX)>
+    <INPUT TYPE="button" NAME="Submit8" VALUE="ClearBorder" ONCLICK=ActiveXocxclearBorder(MyIRActiveX)>
+</div>
+  </td> 
+  <td>
+   <div>
+   <INPUT TYPE="button" NAME="Submit20" VALUE="OnTest" WIDTH=20 ONCLICK=ActiveXOnText(MyCCDActiveX) >
+    <INPUT TYPE="button" NAME="Submit21" VALUE="IsOcxOK" ONCLICK=ActiveXocxIsOcxOK(MyCCDActiveX)>
+    <INPUT TYPE="button" NAME="Submit23" VALUE="SetWinSize" WIDTH=20 ONCLICK=ActiveXWindowSize(MyCCDActiveX) >
+    <INPUT TYPE="button" NAME="Submit24" VALUE="PTZControl" ONCLICK=ActiveXocxPTZControl(MyCCDActiveX)>
+    <INPUT TYPE="button" NAME="Submit25" VALUE="VideoStartTest" ONCLICK=ActiveXocxVideoStartTest(MyCCDActiveX)>
+	<INPUT TYPE="button" NAME="Submit26" VALUE="CCDVideoStart" ONCLICK=ActiveXCCDVideoStart(MyCCDActiveX)>
+	<INPUT TYPE="button" NAME="Submit27" VALUE="VideoStop" ONCLICK=ActiveXocxVideoStop(MyCCDActiveX)>
+    <INPUT TYPE="button" NAME="Submit28" VALUE="ClearBorder" ONCLICK=ActiveXocxclearBorder(MyCCDActiveX)>
+	
+</div>
+  </td>
+  </tr>
+</table>
+ <div id="sliderDetail" style="font-weight:bolder;"></div>
+        <div style="height:30px; margin:10px; ">
+          <div id="sliderDemo1" style="height:20px;"></div>
+        </div>
+  <script type="text/javascript">
+        //<![CDATA[
+          var sliderImage1 = new neverModules.modules.slider(
+          {targetId: "sliderDemo1",
+          sliderCss: "imageSlider1",
+          barCss: "imageBar1",
+          min: 0,
+          max: 255,
+          hints: "move the slider"
+          });
+          sliderImage1.onstart  = function () {
+            //getElementById("sliderDetail").innerHTML = "onstart: sliderImage1 Start value is " +sliderImage1.getValue();
+          }
+          sliderImage1.onchange = function () {	
+            getElementById("sliderDetail").innerHTML = "IR Channel Merge Alpha value is " +sliderImage1.getValue();
+			MyIRActiveX.ocxSetChannMRGBAlpha(sliderImage1.getValue());
+          };
+          sliderImage1.onend = function () {
+           // getElementById("sliderDetail").innerHTML += ", onend: The end the sliderImage1 value is " +sliderImage1.getValue();
+          }
+          sliderImage1.create();
+          sliderImage1.setValue(sliderImage1.max/2);
+        //]]>
+        </script>
+</p>
+<div style="display:inline;">
+<div style="display:inline;">工作站IP：</div>
+<div style="border-width:1;border-color:balck;border-style:solid;width:165;font-size:9pt;display:inline;"> 
+<input type=text name=sip1 maxlength=3 class=a3 value="192" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sip2 maxlength=3 class=a3 value="168" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sip3 maxlength=3 class=a3 value="106" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sip4 maxlength=3 class=a3 value="138" onkeyup="mask(this)" onbeforepaste=mask_c()>  
+</div>
+<div style="display:inline;margin-left:20px;">端口号：</div><div style="display:inline;"><input type=text name=sPort style="width:50px" value="9908"></div>
+
+<div style="display:inline;margin-left:40px">监控器IP：</div><div style="border-width:1;border-color:balck;border-style:solid;width:165;font-size:9pt;display:inline;"> 
+<input type=text name=sMip1 maxlength=3 class=a3 value="192" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sMip2 maxlength=3 class=a3 value="168" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sMip3 maxlength=3 class=a3 value="106" onkeyup="mask(this)" onbeforepaste=mask_c()>.  
+<input type=text name=sMip4 maxlength=3 class=a3 value="138" onkeyup="mask(this)" onbeforepaste=mask_c()>  
+</div>
+<div style="display:inline;margin-left:20px;">监控器端口号：</div><div style="display:inline;"><input type=text name=sMPort style="width:50px" value="9905"></div>
+</div>
+<BR/>
+<BR/>
+<div style="display:inline;">
+    <div style="width:60px;margin-left:28px">
+	<INPUT TYPE="button" NAME="Submit37" VALUE="up" width="20" ONCLICK=ActiveXocxVideoControlUp()>
+    </div>
+    <div>
+        <INPUT TYPE="button" NAME="Submit38" VALUE="left" ONCLICK=ActiveXocxVideoControlLeft()>
+		<INPUT TYPE="button" NAME="Submit41" VALUE="stop" ONCLICK=ActiveXocxVideoControlStop()>
+        <INPUT TYPE="button" NAME="Submit39" VALUE="right" ONCLICK=ActiveXocxVideoControlRight()>
+    </div>
+    <div style="width:60px;margin-left:25px">
+        <INPUT TYPE="button" NAME="Submit40" VALUE="down" ONCLICK=ActiveXocxVideoControlDown()>
+    </div>
+	<BR/>
+<BR/>
+	<INPUT TYPE="button" NAME="Submit50" VALUE="IRFocusFar" ONCLICK=ActiveXocxVideoControlFocusFar(MyIRActiveX)>
+	<INPUT TYPE="button" NAME="Submit51" VALUE="IRFocusNear" ONCLICK=ActiveXocxVideoControlFocusNear(MyIRActiveX)>
+	<INPUT TYPE="button" NAME="Submit52" VALUE="IRAutoFocus" ONCLICK=ActiveXocxIRControlAutoFocus(MyIRActiveX)>
+	<INPUT TYPE="button" NAME="Submit53" VALUE="IRShutter" ONCLICK=ActiveXocxIRControlShutter(MyIRActiveX)>
+	<INPUT TYPE="button" NAME="Submit54" VALUE="CCDFocusFar" ONCLICK=ActiveXocxVideoControlFocusFar(MyCCDActiveX)>
+	<INPUT TYPE="button" NAME="Submit55" VALUE="CCDFocusNear" ONCLICK=ActiveXocxVideoControlFocusNear(MyCCDActiveX)>
+ </div>
+	<br/>
+	 <div id="divMsg" style="color:#00FF00"></div>
+	 <br/>
+	  <br/>
+    <div id="divRetMsg" style="color:#FF0000"></div>
+</body>
+
+</html>
