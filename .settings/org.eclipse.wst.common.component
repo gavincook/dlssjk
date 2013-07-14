@@ -3,6 +3,7 @@
     <wb-module deploy-name="dlssjk">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/lib" source-path="/target/dlssjk/WEB-INF/lib"/>
         <property name="context-root" value="dlssjk"/>
         <property name="java-output-path" value="/dlssjk/build/classes"/>
     </wb-module>
