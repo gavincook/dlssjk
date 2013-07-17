@@ -1,250 +1,250 @@
-Ò»¡¢¸ÅÊö£º
-´Ë´ÎÊı¾İ¿âÇ¨ÒÆ°üº¬Á½²½£º
-1¡¢·ÖÎöĞÂÊı¾İ¿â£¬½«¹¤×÷Õ¾³ÌĞòÇ¨ÒÆµ½ĞÂÊı¾İ¿âÉÏ
-2¡¢±àĞ´³ÌĞò½«¾É°æÊı¾İ¿âµÄÊı¾İµ¼Èëµ½ĞÂ°æÊı¾İ¿â
+ä¸€ã€æ¦‚è¿°ï¼š
+æ­¤æ¬¡æ•°æ®åº“è¿ç§»åŒ…å«ä¸¤æ­¥ï¼š
+1ã€åˆ†ææ–°æ•°æ®åº“ï¼Œå°†å·¥ä½œç«™ç¨‹åºè¿ç§»åˆ°æ–°æ•°æ®åº“ä¸Š
+2ã€ç¼–å†™ç¨‹åºå°†æ—§ç‰ˆæ•°æ®åº“çš„æ•°æ®å¯¼å…¥åˆ°æ–°ç‰ˆæ•°æ®åº“
 
-¶ş¡¢ĞÂ°æÊı¾İ¿â·ÖÎö
+äºŒã€æ–°ç‰ˆæ•°æ®åº“åˆ†æ
 ****************************************
-1¡¢alarm_table
+1ã€alarm_table
 ----------------------------------------
-½«×¥ÅÄµÄÎÄ¼şºÍÏàÓ¦¼ÇÂ¼ÎÄ¼ş×Ö¶ÎĞŞ¸ÄÈçÏÂ£º
+å°†æŠ“æ‹çš„æ–‡ä»¶å’Œç›¸åº”è®°å½•æ–‡ä»¶å­—æ®µä¿®æ”¹å¦‚ä¸‹ï¼š
 alarm_snapFilePath      ---> snapFilePath
 alarm_recordingFilePath ---> recordingFilePath
-É¾³ı±¨±íÎÄ¼şÃû×Ö:alarm_reportFileName
+åˆ é™¤æŠ¥è¡¨æ–‡ä»¶åå­—:alarm_reportFileName
 ****************************************
 
 ****************************************
-2¡¢area_table
+2ã€area_table
 ----------------------------------------
-Ôö¼ÓÁËµÈ¼¶ÎÂ¶ÈµÈ×Ö¶Î£¬µ«²»Ó°Ïì¶ÁÈ¡¼à¿ØÇøÓòÊı¾İ(Ö»Ğè¶ÁÈ¡name)
-Ôö¼ÓµÄ×Ö¶ÎÈçÏÂ:
-  area_gradeTemp;                           //µÈ¼¶ÎÂ¶È
-  area_redueType;                           //Í¼ĞÎ´¦Àí·½Ê½£¬0 ´ı²âÇøÓò£¬1²Î¿¼ÇøÓò
-  area_setComponentName;                    //Éè±¸²¿¼şÃû³Æ
-  area_setPositionName;                     //Éè±¸²¿Î»Ãû³Æ
-  area_setAssistContentName;                //Éè±¸¸¨ÖúËµÃ÷
-  area_pimsDeviceId;                        //pimsÏµÍ³Êı¾İID
-  area_alarmAdjustType;                     //±¨¾¯ÅĞ¶Ï·½Ê½Ñ¡Ôñ
-  area_trendDays;                           //Ç÷ÊÆ·ÖÎöÌìÊı
-  area_trendType;                           //Ç÷ÊÆ·ÖÎöÀàĞÍ
+å¢åŠ äº†ç­‰çº§æ¸©åº¦ç­‰å­—æ®µï¼Œä½†ä¸å½±å“è¯»å–ç›‘æ§åŒºåŸŸæ•°æ®(åªéœ€è¯»å–name)
+å¢åŠ çš„å­—æ®µå¦‚ä¸‹:
+  area_gradeTemp;                           //ç­‰çº§æ¸©åº¦
+  area_redueType;                           //å›¾å½¢å¤„ç†æ–¹å¼ï¼Œ0 å¾…æµ‹åŒºåŸŸï¼Œ1å‚è€ƒåŒºåŸŸ
+  area_setComponentName;                    //è®¾å¤‡éƒ¨ä»¶åç§°
+  area_setPositionName;                     //è®¾å¤‡éƒ¨ä½åç§°
+  area_setAssistContentName;                //è®¾å¤‡è¾…åŠ©è¯´æ˜
+  area_pimsDeviceId;                        //pimsç³»ç»Ÿæ•°æ®ID
+  area_alarmAdjustType;                     //æŠ¥è­¦åˆ¤æ–­æ–¹å¼é€‰æ‹©
+  area_trendDays;                           //è¶‹åŠ¿åˆ†æå¤©æ•°
+  area_trendType;                           //è¶‹åŠ¿åˆ†æç±»å‹
   pims_globalId;                            //pims_globalId
-  setPosition_id;                           //ÉèÖÃ¼à¿ØÇøÓòÊÇ¹ØÁª×´Ì¬ÏµÍ³
+  setPosition_id;                           //è®¾ç½®ç›‘æ§åŒºåŸŸæ˜¯å…³è”çŠ¶æ€ç³»ç»Ÿ
  
 ****************************************
 
 ****************************************
-3¡¢monitor_table
+3ã€monitor_table
 ----------------------------------------
-ÎŞ½á¹¹±ä¶¯
+æ— ç»“æ„å˜åŠ¨
 ****************************************
 
 ****************************************
-4¡¢point_table
+4ã€point_table
 ----------------------------------------
-ÎŞ½á¹¹±ä¶¯
+æ— ç»“æ„å˜åŠ¨
 ****************************************
 
 ****************************************
-5¡¢station_table
+5ã€station_table
 ----------------------------------------
-Ôö¼ÓÁË:
- station_email;             //µç×ÓÓÊ¼ş
- station_version;           //¹¤×÷Õ¾Êı¾İ¿â°æ±¾
- property_id;               //¹¤×÷Õ¾×´Ì¬ÏµÍ³Í³Ò»id
-¾É°æ±¾ÈßÓàÁË station_description×Ö¶Î£¬°üº¬ÁËÒ»¸ö station_decription
+å¢åŠ äº†:
+ station_email;             //ç”µå­é‚®ä»¶
+ station_version;           //å·¥ä½œç«™æ•°æ®åº“ç‰ˆæœ¬
+ property_id;               //å·¥ä½œç«™çŠ¶æ€ç³»ç»Ÿç»Ÿä¸€id
+æ—§ç‰ˆæœ¬å†—ä½™äº† station_descriptionå­—æ®µï¼ŒåŒ…å«äº†ä¸€ä¸ª station_decription
 ****************************************
 
 ****************************************
-6¡¢taskarealog_table
+6ã€taskarealog_table
 ----------------------------------------
-Ôö¼ÓÁË:
- taskarealog_aveTemp;    //Æ½¾ùÎÂ¶È
+å¢åŠ äº†:
+ taskarealog_aveTemp;    //å¹³å‡æ¸©åº¦
 ****************************************
 
 ****************************************
-7¡¢tasklog_table
+7ã€tasklog_table
 ----------------------------------------
-ÎŞ½á¹¹±ä¶¯
+æ— ç»“æ„å˜åŠ¨
 ****************************************
 
 
 ****************************************
-8¡¢taskpointlog_table
+8ã€taskpointlog_table
 ----------------------------------------
-É¾³ı:
+åˆ é™¤:
 taskpointlog_snapName
 ****************************************
 
 
 ****************************************
-9¡¢taskpoint_table
+9ã€taskpoint_table
 ----------------------------------------
-Ôö¼Ó:
+å¢åŠ :
  monitor_id;  
 ****************************************
 
 
 
 ****************************************
-10¡¢task_table
+10ã€task_table
 ----------------------------------------
-Ôö¼Ó:
- task_points;//ÈÎÎñµÄ¼à¿ØµãÃûÁĞ±í
- ±¸×¢:´Ë×Ö¶Î²»Çå³ş´æ´¢µÄ¸ñÊ½ÊÇÊ²Ã´?
+å¢åŠ :
+ task_points;//ä»»åŠ¡çš„ç›‘æ§ç‚¹ååˆ—è¡¨
+ å¤‡æ³¨:æ­¤å­—æ®µä¸æ¸…æ¥šå­˜å‚¨çš„æ ¼å¼æ˜¯ä»€ä¹ˆ?
 ****************************************
 
 
 
 ****************************************
-11¡¢user_table
+11ã€user_table
 ----------------------------------------
-Ôö¼Ó:
+å¢åŠ :
  user_email;       //email
- user_telephone;   //µç»°
+ user_telephone;   //ç”µè¯
 ****************************************
 
 
 
 ****************************************
-12¡¢runingLog_table(ĞÂÔö±í)
+12ã€runingLog_table(æ–°å¢è¡¨)
 ----------------------------------------
- task_time;            //ÔËĞĞÊ±¼ä
- task_name;            //ÈÎÎñÃû³Æ
- monitor_ip;           //¼à¿ØÆ÷ip
- monitor_name;         //¼à¿ØÆ÷Ãû³Æ
- point_name;           //¼à¿ØµãÃû³Æ
- check_time;           //¼ì²âÊ±¼ä
- area_name;            //ÇøÓòÃû³Æ
- area_realTemp;        //Êµ¼ÊÎÂ¶È
- area_alarmTemp;       //±¨¾¯ÎÂ¶È
- alarm_type;           //±¨¾¯ÀàĞÍ
- alarm_state;          //±¨¾¯×´Ì¬
+ task_time;            //è¿è¡Œæ—¶é—´
+ task_name;            //ä»»åŠ¡åç§°
+ monitor_ip;           //ç›‘æ§å™¨ip
+ monitor_name;         //ç›‘æ§å™¨åç§°
+ point_name;           //ç›‘æ§ç‚¹åç§°
+ check_time;           //æ£€æµ‹æ—¶é—´
+ area_name;            //åŒºåŸŸåç§°
+ area_realTemp;        //å®é™…æ¸©åº¦
+ area_alarmTemp;       //æŠ¥è­¦æ¸©åº¦
+ alarm_type;           //æŠ¥è­¦ç±»å‹
+ alarm_state;          //æŠ¥è­¦çŠ¶æ€
 ****************************************
 
 
 
 ****************************************
-13¡¢alarmLog_table(ĞÂÔö±í)
+13ã€alarmLog_table(æ–°å¢è¡¨)
 ----------------------------------------
- alarm_time;           //±¨¾¯Ê±¼ä
- monitor_name;         //¼à¿ØÆ÷Ãû³Æ
- point_name;           //¼à¿ØµãÃû³Æ
- area_name;            //ÇøÓòÃû³Æ
- report;               //±¨¸æ
- task_name;            //ÈÎÎñÃû³Æ
- alarm_type;           //±¨¾¯µÈ¼¶
- alarm_temp;           //±¨¾¯ÎÂ¶È
+ alarm_time;           //æŠ¥è­¦æ—¶é—´
+ monitor_name;         //ç›‘æ§å™¨åç§°
+ point_name;           //ç›‘æ§ç‚¹åç§°
+ area_name;            //åŒºåŸŸåç§°
+ report;               //æŠ¥å‘Š
+ task_name;            //ä»»åŠ¡åç§°
+ alarm_type;           //æŠ¥è­¦ç­‰çº§
+ alarm_temp;           //æŠ¥è­¦æ¸©åº¦
 
- ¿ÉÓÃÓÚ»ñÈ¡±¨¾¯ÈÕÖ¾±¨¸æ£¬ÓÉÓÚ´æÔÚalarm_table£¬Ïà¶ÔÈßÓà.
+ å¯ç”¨äºè·å–æŠ¥è­¦æ—¥å¿—æŠ¥å‘Šï¼Œç”±äºå­˜åœ¨alarm_tableï¼Œç›¸å¯¹å†—ä½™.
 ****************************************
 
 
 
 ****************************************
-14¡¢system_table
+14ã€system_table
 ----------------------------------------
-ÎŞ½á¹¹±ä¶¯
+æ— ç»“æ„å˜åŠ¨
 ****************************************
 
 
 ****************************************
-15¡¢device_table
+15ã€device_table
 ----------------------------------------
-Ôö¼Ó:
- device_emissivity;           //·øÉäÂÊ
+å¢åŠ :
+ device_emissivity;           //è¾å°„ç‡
 ****************************************
 
 
 ****************************************
-16¡¢component_table
+16ã€component_table
 ----------------------------------------
-Ôö¼Ó:
-  component_emissivity;       //·øÉäÂÊ
+å¢åŠ :
+  component_emissivity;       //è¾å°„ç‡
 ****************************************
 
 
 ****************************************
-17¡¢finesse_table --¼ÇÂ¼²ßÂÔĞÅÏ¢
+17ã€finesse_table --è®°å½•ç­–ç•¥ä¿¡æ¯
 ----------------------------------------
-ÎŞ½á¹¹±ä¶¯
+æ— ç»“æ„å˜åŠ¨
 ****************************************
 
 
 ****************************************
-18¡¢ execution_table(ĞÂÔö±í)--¼ÇÂ¼Ö´ĞĞĞÅÏ¢
+18ã€ execution_table(æ–°å¢è¡¨)--è®°å½•æ‰§è¡Œä¿¡æ¯
 ----------------------------------------
- execution_id;                  //Ö´ĞĞÈÎÎñID
- execution_name;                //Ö´ĞĞÈÎÎñÃû³Æ
- execution_taskList;            //»ù±¾ÈÎÎñid×Ö·û´®
- exectuion_runningFlag;         //ÔËĞĞ±êÖ¾
- execution_runDetecStyle;       //¼ì²âÄ£Ê½
- execution_runAlarmRecordTimes; //Â¼ÏñÊ±¼ä
- execution_runMonths;           //²ßÂÔÔËĞĞÔÂ·İ
+ execution_id;                  //æ‰§è¡Œä»»åŠ¡ID
+ execution_name;                //æ‰§è¡Œä»»åŠ¡åç§°
+ execution_taskList;            //åŸºæœ¬ä»»åŠ¡idå­—ç¬¦ä¸²
+ exectuion_runningFlag;         //è¿è¡Œæ ‡å¿—
+ execution_runDetecStyle;       //æ£€æµ‹æ¨¡å¼
+ execution_runAlarmRecordTimes; //å½•åƒæ—¶é—´
+ execution_runMonths;           //ç­–ç•¥è¿è¡Œæœˆä»½
 ****************************************
 
 
 ****************************************
-19¡¢setdevicetype_table(ĞÂÔö±í)---¼ÇÂ¼Éè±¸ÀàĞÍÉèÖÃĞÅÏ¢
+19ã€setdevicetype_table(æ–°å¢è¡¨)---è®°å½•è®¾å¤‡ç±»å‹è®¾ç½®ä¿¡æ¯
 ----------------------------------------
  setDeviceType_id;              //id
- setDeviceType_name;            //Éè±¸ÀàĞÍÃû³Æ
- detect_sign;                   //²âÎÂµ¼Ôò¹ØÁª±êÖ¾
+ setDeviceType_name;            //è®¾å¤‡ç±»å‹åç§°
+ detect_sign;                   //æµ‹æ¸©å¯¼åˆ™å…³è”æ ‡å¿—
 ****************************************
 
 
 ****************************************
-20¡¢setcomponent_table(ĞÂÔö±í) --- ¼ÇÂ¼²¿¼şÉèÖÃĞÅÏ¢
+20ã€setcomponent_table(æ–°å¢è¡¨) --- è®°å½•éƒ¨ä»¶è®¾ç½®ä¿¡æ¯
 ----------------------------------------
  setComponent_id;               //id
- setDeviceType_id;              //Àà±ğID
- setComponent_name;		//²¿¼şÃû³Æ
- detect_sign;                   //²âÎÂµ¼Ôò¹ØÁª±êÖ¾
+ setDeviceType_id;              //ç±»åˆ«ID
+ setComponent_name;		//éƒ¨ä»¶åç§°
+ detect_sign;                   //æµ‹æ¸©å¯¼åˆ™å…³è”æ ‡å¿—
 ****************************************
 
 
 ****************************************
-21¡¢ setposition_table(ĞÂÔö±í)---¼ÇÂ¼Î»ÖÃÉèÖÃĞÅÏ¢
+21ã€ setposition_table(æ–°å¢è¡¨)---è®°å½•ä½ç½®è®¾ç½®ä¿¡æ¯
 ----------------------------------------
  setPosition_id;               //id
- setPosition_name;	       //²¿Î»Ãû³Æ
- setDeviceType_id;             //Éè±¸Àà±ğID
- setComponent_id;              //Éè±¸²¿Î»ID
- detect_sign;                  //²âÎÂµ¼Ôò¹ØÁª±êÖ¾
- setPosition_code;             //×´Ì¬ÏµÍ³Í³Ò»±àÂë
+ setPosition_name;	       //éƒ¨ä½åç§°
+ setDeviceType_id;             //è®¾å¤‡ç±»åˆ«ID
+ setComponent_id;              //è®¾å¤‡éƒ¨ä½ID
+ detect_sign;                  //æµ‹æ¸©å¯¼åˆ™å…³è”æ ‡å¿—
+ setPosition_code;             //çŠ¶æ€ç³»ç»Ÿç»Ÿä¸€ç¼–ç 
 ****************************************
 
 
 ****************************************
-22¡¢ setdeviceinfo_table(ĞÂÔö±í) --- ¼ÇÂ¼Éè±¸±¾ÉíÏà¹ØĞÅÏ¢
+22ã€ setdeviceinfo_table(æ–°å¢è¡¨) --- è®°å½•è®¾å¤‡æœ¬èº«ç›¸å…³ä¿¡æ¯
 ----------------------------------------
  setDeviceInfo_id;                           //id
- setDeviceInfo_name;                         //Éè±¸Ãû³Æ
- setDeviceInfo_runNO;			     //Éè±¸±àÂë
- setDeviceInfo_thePUC;                       //ËùÊôÊĞ¾Ö
- setDeviceInfo_runCompany;		     //ÔËĞĞµ¥Î»
- setDeviceInfo_station;			     //±äµçÕ¾
- setDeviceInfo_assetQuality;		     //×Ê²úĞÔÖÊ
- setDeviceInfo_assetCompany;		     //×Ê²úµ¥Î»
- setDeviceType_name;			     //Éè±¸ÀàĞÍ
- setDeviceInfo_voltageGrade;		     //µçÑ¹µÈ¼¶
- setDeviceInfo_intervalUnit;		     //¼ä¸ôµ¥Ôª
- setDeviceInfo_phaseNumber;		     //ÏàÊı
- setDeviceInfo_Phase;			     //Ïà±ğ
- setDeviceInfo_ratedVoltage;                 //¶î¶¨µçÑ¹
- setDeviceInfo_ratedCurrent;                 //¶î¶¨µçÁ÷
- setDeviceInfo_ratedFrequency;               //¶î¶¨ÆµÂÊ
- setDeviceInfo_equipmentType;                //Éè±¸ĞÍºÅ
- setDeviceInfo_producer;                     //Éú²ú²ú¼Ò
- setDeviceInfo_factoryNumber;                //³ö³§±àºÅ
- setDeviceInfo_productCode;                  //²úÆ·´úºÅ
- setDeviceInfo_producerCountry;              //ÖÆÔì¹ú¼Ò
- setDeviceInfo_dateOfDelivery;               //³ö³§ÈÕÆÚ
- setDeviceInfo_dateOfRun;                    //Í¶ÔËÈÕÆÚ
- setDeviceInfo_UseEnvironment;               //Ê¹ÓÃ»·¾³
- setDeviceInfo_pollutionLevel;               //·ÀÎÛµÈ¼¶
- setDeviceInfo_assetNumber;                  //×Ê²ú±àºÅ
- setDeviceInfo_runStatus;                    //ÔËĞĞ×´Ì¬
- setDeviceInfo_dateOfRecentlyRun;            //×î½üÍ¶ÔËÈÕÆÚ
- setDeviceInfo_stateAudit;                   //ÉóºË×´Ì¬
- setDeviceInfo_deviceId;                     //Éè±¸±àÂë
+ setDeviceInfo_name;                         //è®¾å¤‡åç§°
+ setDeviceInfo_runNO;			     //è®¾å¤‡ç¼–ç 
+ setDeviceInfo_thePUC;                       //æ‰€å±å¸‚å±€
+ setDeviceInfo_runCompany;		     //è¿è¡Œå•ä½
+ setDeviceInfo_station;			     //å˜ç”µç«™
+ setDeviceInfo_assetQuality;		     //èµ„äº§æ€§è´¨
+ setDeviceInfo_assetCompany;		     //èµ„äº§å•ä½
+ setDeviceType_name;			     //è®¾å¤‡ç±»å‹
+ setDeviceInfo_voltageGrade;		     //ç”µå‹ç­‰çº§
+ setDeviceInfo_intervalUnit;		     //é—´éš”å•å…ƒ
+ setDeviceInfo_phaseNumber;		     //ç›¸æ•°
+ setDeviceInfo_Phase;			     //ç›¸åˆ«
+ setDeviceInfo_ratedVoltage;                 //é¢å®šç”µå‹
+ setDeviceInfo_ratedCurrent;                 //é¢å®šç”µæµ
+ setDeviceInfo_ratedFrequency;               //é¢å®šé¢‘ç‡
+ setDeviceInfo_equipmentType;                //è®¾å¤‡å‹å·
+ setDeviceInfo_producer;                     //ç”Ÿäº§äº§å®¶
+ setDeviceInfo_factoryNumber;                //å‡ºå‚ç¼–å·
+ setDeviceInfo_productCode;                  //äº§å“ä»£å·
+ setDeviceInfo_producerCountry;              //åˆ¶é€ å›½å®¶
+ setDeviceInfo_dateOfDelivery;               //å‡ºå‚æ—¥æœŸ
+ setDeviceInfo_dateOfRun;                    //æŠ•è¿æ—¥æœŸ
+ setDeviceInfo_UseEnvironment;               //ä½¿ç”¨ç¯å¢ƒ
+ setDeviceInfo_pollutionLevel;               //é˜²æ±¡ç­‰çº§
+ setDeviceInfo_assetNumber;                  //èµ„äº§ç¼–å·
+ setDeviceInfo_runStatus;                    //è¿è¡ŒçŠ¶æ€
+ setDeviceInfo_dateOfRecentlyRun;            //æœ€è¿‘æŠ•è¿æ—¥æœŸ
+ setDeviceInfo_stateAudit;                   //å®¡æ ¸çŠ¶æ€
+ setDeviceInfo_deviceId;                     //è®¾å¤‡ç¼–ç 
 ****************************************
