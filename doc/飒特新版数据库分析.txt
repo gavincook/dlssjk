@@ -1,0 +1,250 @@
+一、概述：
+此次数据库迁移包含两步：
+1、分析新数据库，将工作站程序迁移到新数据库上
+2、编写程序将旧版数据库的数据导入到新版数据库
+
+二、新版数据库分析
+****************************************
+1、alarm_table
+----------------------------------------
+将抓拍的文件和相应记录文件字段修改如下：
+alarm_snapFilePath      ---> snapFilePath
+alarm_recordingFilePath ---> recordingFilePath
+删除报表文件名字:alarm_reportFileName
+****************************************
+
+****************************************
+2、area_table
+----------------------------------------
+增加了等级温度等字段，但不影响读取监控区域数据(只需读取name)
+增加的字段如下:
+  area_gradeTemp;                           //等级温度
+  area_redueType;                           //图形处理方式，0 待测区域，1参考区域
+  area_setComponentName;                    //设备部件名称
+  area_setPositionName;                     //设备部位名称
+  area_setAssistContentName;                //设备辅助说明
+  area_pimsDeviceId;                        //pims系统数据ID
+  area_alarmAdjustType;                     //报警判断方式选择
+  area_trendDays;                           //趋势分析天数
+  area_trendType;                           //趋势分析类型
+  pims_globalId;                            //pims_globalId
+  setPosition_id;                           //设置监控区域是关联状态系统
+ 
+****************************************
+
+****************************************
+3、monitor_table
+----------------------------------------
+无结构变动
+****************************************
+
+****************************************
+4、point_table
+----------------------------------------
+无结构变动
+****************************************
+
+****************************************
+5、station_table
+----------------------------------------
+增加了:
+ station_email;             //电子邮件
+ station_version;           //工作站数据库版本
+ property_id;               //工作站状态系统统一id
+旧版本冗余了 station_description字段，包含了一个 station_decription
+****************************************
+
+****************************************
+6、taskarealog_table
+----------------------------------------
+增加了:
+ taskarealog_aveTemp;    //平均温度
+****************************************
+
+****************************************
+7、tasklog_table
+----------------------------------------
+无结构变动
+****************************************
+
+
+****************************************
+8、taskpointlog_table
+----------------------------------------
+删除:
+taskpointlog_snapName
+****************************************
+
+
+****************************************
+9、taskpoint_table
+----------------------------------------
+增加:
+ monitor_id;  
+****************************************
+
+
+
+****************************************
+10、task_table
+----------------------------------------
+增加:
+ task_points;//任务的监控点名列表
+ 备注:此字段不清楚存储的格式是什么?
+****************************************
+
+
+
+****************************************
+11、user_table
+----------------------------------------
+增加:
+ user_email;       //email
+ user_telephone;   //电话
+****************************************
+
+
+
+****************************************
+12、runingLog_table(新增表)
+----------------------------------------
+ task_time;            //运行时间
+ task_name;            //任务名称
+ monitor_ip;           //监控器ip
+ monitor_name;         //监控器名称
+ point_name;           //监控点名称
+ check_time;           //检测时间
+ area_name;            //区域名称
+ area_realTemp;        //实际温度
+ area_alarmTemp;       //报警温度
+ alarm_type;           //报警类型
+ alarm_state;          //报警状态
+****************************************
+
+
+
+****************************************
+13、alarmLog_table(新增表)
+----------------------------------------
+ alarm_time;           //报警时间
+ monitor_name;         //监控器名称
+ point_name;           //监控点名称
+ area_name;            //区域名称
+ report;               //报告
+ task_name;            //任务名称
+ alarm_type;           //报警等级
+ alarm_temp;           //报警温度
+
+ 可用于获取报警日志报告，由于存在alarm_table，相对冗余.
+****************************************
+
+
+
+****************************************
+14、system_table
+----------------------------------------
+无结构变动
+****************************************
+
+
+****************************************
+15、device_table
+----------------------------------------
+增加:
+ device_emissivity;           //辐射率
+****************************************
+
+
+****************************************
+16、component_table
+----------------------------------------
+增加:
+  component_emissivity;       //辐射率
+****************************************
+
+
+****************************************
+17、finesse_table --记录策略信息
+----------------------------------------
+无结构变动
+****************************************
+
+
+****************************************
+18、 execution_table(新增表)--记录执行信息
+----------------------------------------
+ execution_id;                  //执行任务ID
+ execution_name;                //执行任务名称
+ execution_taskList;            //基本任务id字符串
+ exectuion_runningFlag;         //运行标志
+ execution_runDetecStyle;       //检测模式
+ execution_runAlarmRecordTimes; //录像时间
+ execution_runMonths;           //策略运行月份
+****************************************
+
+
+****************************************
+19、setdevicetype_table(新增表)---记录设备类型设置信息
+----------------------------------------
+ setDeviceType_id;              //id
+ setDeviceType_name;            //设备类型名称
+ detect_sign;                   //测温导则关联标志
+****************************************
+
+
+****************************************
+20、setcomponent_table(新增表) --- 记录部件设置信息
+----------------------------------------
+ setComponent_id;               //id
+ setDeviceType_id;              //类别ID
+ setComponent_name;		//部件名称
+ detect_sign;                   //测温导则关联标志
+****************************************
+
+
+****************************************
+21、 setposition_table(新增表)---记录位置设置信息
+----------------------------------------
+ setPosition_id;               //id
+ setPosition_name;	       //部位名称
+ setDeviceType_id;             //设备类别ID
+ setComponent_id;              //设备部位ID
+ detect_sign;                  //测温导则关联标志
+ setPosition_code;             //状态系统统一编码
+****************************************
+
+
+****************************************
+22、 setdeviceinfo_table(新增表) --- 记录设备本身相关信息
+----------------------------------------
+ setDeviceInfo_id;                           //id
+ setDeviceInfo_name;                         //设备名称
+ setDeviceInfo_runNO;			     //设备编码
+ setDeviceInfo_thePUC;                       //所属市局
+ setDeviceInfo_runCompany;		     //运行单位
+ setDeviceInfo_station;			     //变电站
+ setDeviceInfo_assetQuality;		     //资产性质
+ setDeviceInfo_assetCompany;		     //资产单位
+ setDeviceType_name;			     //设备类型
+ setDeviceInfo_voltageGrade;		     //电压等级
+ setDeviceInfo_intervalUnit;		     //间隔单元
+ setDeviceInfo_phaseNumber;		     //相数
+ setDeviceInfo_Phase;			     //相别
+ setDeviceInfo_ratedVoltage;                 //额定电压
+ setDeviceInfo_ratedCurrent;                 //额定电流
+ setDeviceInfo_ratedFrequency;               //额定频率
+ setDeviceInfo_equipmentType;                //设备型号
+ setDeviceInfo_producer;                     //生产产家
+ setDeviceInfo_factoryNumber;                //出厂编号
+ setDeviceInfo_productCode;                  //产品代号
+ setDeviceInfo_producerCountry;              //制造国家
+ setDeviceInfo_dateOfDelivery;               //出厂日期
+ setDeviceInfo_dateOfRun;                    //投运日期
+ setDeviceInfo_UseEnvironment;               //使用环境
+ setDeviceInfo_pollutionLevel;               //防污等级
+ setDeviceInfo_assetNumber;                  //资产编号
+ setDeviceInfo_runStatus;                    //运行状态
+ setDeviceInfo_dateOfRecentlyRun;            //最近投运日期
+ setDeviceInfo_stateAudit;                   //审核状态
+ setDeviceInfo_deviceId;                     //设备编码
+****************************************
