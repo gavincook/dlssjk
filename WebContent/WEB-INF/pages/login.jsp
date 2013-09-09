@@ -64,22 +64,25 @@ $.fn.reset = function(){
 			 window.open(url);
  };
 $(function(){
+	$(":text,:password").keyup(function(event){
+		if(event.which==13){
+			$("#submit").trigger("click");
+		}
+	});
 	$("#submit").click(function(){
-		
-	$("#loginForm").ajaxSubmitForm("${pageContext.request.contextPath}/user/login/validate",
-			function(result) {
-		if("${from}")
-			$.href("${from}");
-		else
-			$.href("${pageContext.request.contextPath}/index");
-			}, 
-			function(result) {
-				if(!result.success){
-					alert("用户名或密码错误");
-				}
-			});
-		
+		$("#loginForm").ajaxSubmitForm("${pageContext.request.contextPath}/user/login/validate",
+				function(result) {
+			if("${from}")
+				$.href("${from}");
+			else
+				$.href("${pageContext.request.contextPath}/index");
+				}, 
+				function(result) {
+					if(!result.success){
+						alert("用户名或密码错误");
+					}
 		});
+	});
 
 		$("#reset").click(function() {
 			$("#loginForm").reset();

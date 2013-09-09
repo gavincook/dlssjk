@@ -1,7 +1,6 @@
 package com.greejoy.dlssjk.domain;
 
 import java.net.MalformedURLException;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -219,7 +218,7 @@ public class Station extends BaseDomain{
 	 * @throws ErrorServerException 
 	 */
 	public Boolean getIsAlarm() {
-		if(lastConnectTime==null||System.currentTimeMillis()-lastConnectTime>500000){
+		if(lastConnectTime==null||System.currentTimeMillis()-lastConnectTime>1800000){//30 minutes
 			lastConnectTime = System.currentTimeMillis();
 			Map<String,Object> params = ParamUtils.getDefaultParamMap();
 			params.put("ps", 1);
@@ -235,7 +234,7 @@ public class Station extends BaseDomain{
 					return false;
 				}
 			}catch (Exception e) {
-				System.out.println("有异常");
+				System.out.println("远程连接工作站失败");
 				accessable = false;
 				this.isAlarm = false;
 				return false;
@@ -260,10 +259,8 @@ public class Station extends BaseDomain{
 	 */
 	public Map<String,Object> getLastAlarm() throws MalformedURLException, ErrorServerException {
 		if(isAlarm==null||!this.isAlarm){
-			System.out.println("muyou.....");
 			return null;
 		}
-		System.out.println("执行");
 		Map<String,Object> params = ParamUtils.getDefaultParamMap();
 		params.put("ps", 1);
 		params.put("time_order", "desc");
@@ -272,7 +269,6 @@ public class Station extends BaseDomain{
 			return alarmRecords.get(0);
 		else
 			return null;
-	
 	}
 
 
