@@ -80,19 +80,28 @@
 			 */
 
 			var strConn = stationIP + ":" + stationPort + "&admin@123356";
-			var strStart = "IRV:" + monitorIP + ":" + monitorPort;
+			var strStartIr = "IRV:" + monitorIP + ":" + monitorPort;
+			var strStartCcd="CCDZ:" + monitorIP + ":" + monitorPort;
 			var retVal = irActiveX.ocxConn(strConn);//连接到工作站，并登录；格式：工作站IP:端口号&用户名@密码
-			retVal = irActiveX.ocxVideoStart(strStart);
+			retVal = irActiveX.ocxVideoStart(strStartIr);
 			var retValccd = ccdActiveX.ocxConn(strConn);//连接到工作站，并登录；格式：工作站IP:端口号&用户名@密码
-			retValccd = ccdActiveX.ocxVideoStart(strStart);
-
+			retValccd = ccdActiveX.ocxVideoStart(strStartCcd);
 			connectionOK = true;
 		}
 
 		$("#startButton").click(function() {
 			connect(stationIp, stationPort, monitorIp, monitorPort);
 		});
+		
+		$("#stopButton").click(function() {
+			if(ActiveXocxIsOcxConn(irActiveX) == 1){
+				irActiveX.ocxPTZControl(4, 0);
+			}else if(ActiveXocxIsOcxConn(ccdActiveX) == 1){
+				ccdActiveX.ocxPTZControl(4, 0);
+			}
+		});
 
+		
 		$("#leftButton").click(function() {
 			if (connectionOK) {
 				irActiveX.ocxPTZControl(5, 10);
@@ -138,23 +147,17 @@
 		});
 
 		$("#irAutoButton").click(function() {
-			connectionOK && irActiveX.ocxPTZControl(2);
+			connectionOK && irActiveX.ocxIRControl(2);
 		});
 	});
+	
+	function ActiveXocxIsOcxConn(ActiveXObj) {
+		var nConn = ActiveXObj.ocxIsOcxConn();
+	    return nConn;
+	}
 </script>
 
-<!-- 回调函数 -->
-<SCRIPT FOR="MyIRActiveX" EVENT="clickCallBack()" LANGUAGE="JavaScript">
-	var eRetMsg = document.getElementById("divRetMsg");
-	eRetMsg.innerHTML = "IR - clickCallBack回调成功!";
-	//alert('clickCallBack回调成功!');
-</SCRIPT>
-<!-- 回调函数 -->
-<SCRIPT FOR="MyCCDActiveX" EVENT="clickCallBack()" LANGUAGE="JavaScript">
-	var eRetMsg = document.getElementById("divRetMsg");
-	eRetMsg.innerHTML = "CCD - clickCallBack回调成功!";
-	//alert('clickCallBack回调成功!');
-</SCRIPT>
+
 <style type="text/css" media="all">
 #toolbar div select,input {
 	margin: 0 8px;
@@ -194,7 +197,7 @@
 		</div>
 	</div>
 	<div style="margin: 5px auto; text-align: center; width: 100%;">
-		<h3 style="text-align: center; font: 15px bold;">监控实时情况</h3>
+		<h3 style="text-align: center; font: 15px bold;">监控实时情况(请点击图像进行查看)</h3>
 	</div>
 	<div
 		style="position: absolute; border-left: 3px solid #ccc; left: 245px; top: 0; bottom: 0;"></div>
@@ -248,7 +251,7 @@
 					<button id="leftButton"
 						style="float: none; margin-right: 0px; padding: 0 20px; background: url(../css/images/left.jpg) no-repeat;">
 						&nbsp;&nbsp;&nbsp;&nbsp;</button>
-					<button id="startButton" style="float: none; margin: 0px -4px;">START</button>
+					<button id="stopButton" style="float: none; margin: 0px -4px;">&nbsp;Stop&nbsp;</button>
 					<button id="rightButton"
 						style="float: none; margin-left: 0px; padding: 0 20px; background: url(../css/images/right.jpg) no-repeat;">
 						&nbsp;&nbsp;&nbsp;&nbsp;</button>
