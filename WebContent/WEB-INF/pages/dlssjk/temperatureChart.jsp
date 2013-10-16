@@ -141,7 +141,6 @@ function search(){
     			data.push({name:"环境温度",data:ambTemp});
     		}
 			data.push({name:areaname,data:tempdata});
-			console.log(data);
 			 chart=  new Highcharts.Chart({
 		            chart: {
 		                renderTo: 'container',

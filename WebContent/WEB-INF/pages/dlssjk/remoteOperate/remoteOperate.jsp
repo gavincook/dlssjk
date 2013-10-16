@@ -190,15 +190,18 @@
 </style>
 </head>
 <body>
-	<div id="toolbar" class="space" style="height: auto;">
-		<div style="float: left; width: 242px;">
+  
+  <div style="margin: 5px auto; text-align: center; width: 100%;">
+    <h3 style="text-align: center; font: 15px bold;">监控实时情况(请点击图像进行查看)</h3>
+  </div>
+  
+	<div id="toolbar" class="space" style="height: auto;float: left; width: 242px;">
+		<div>
 			<p style="width: 150px; text-align: right; float: left;">请选择监控云台：</p>
 			<div id="monitorSelect"></div>
 		</div>
 	</div>
-	<div style="margin: 5px auto; text-align: center; width: 100%;">
-		<h3 style="text-align: center; font: 15px bold;">监控实时情况(请点击图像进行查看)</h3>
-	</div>
+
 	<div
 		style="position: absolute; border-left: 3px solid #ccc; left: 245px; top: 0; bottom: 0;"></div>
 	<table id="InfoTable1" class="manage-table space"
